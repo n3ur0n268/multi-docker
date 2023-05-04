@@ -1,3 +1,4 @@
+# Travis configuration file
 sudo: required
 language: generic
 
