@@ -6,20 +6,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t neuron/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t n3ur0n/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true neuron/react-test npm test
+  - docker run -e CI=true n3ur0n/react-test npm test
 
 after_success:
-  - docker build -t neuron/multi-client ./client
-  - docker build -t neuron/multi-nginx ./nginx
-  - docker build -t neuron/multi-server ./server
-  - docker build -t neuron/multi-worker ./worker
+  - docker build -t n3ur0n/multi-client ./client
+  - docker build -t n3ur0n/multi-nginx ./nginx
+  - docker build -t n3ur0n/multi-server ./server
+  - docker build -t n3ur0n/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push neuron/multi-client
-  - docker push neuron/multi-nginx
-  - docker push neuron/multi-server
-  - docker push neuron/multi-worker
+  - docker push n3ur0n/multi-client
+  - docker push n3ur0n/multi-nginx
+  - docker push n3ur0n/multi-server
+  - docker push n3ur0n/multi-worker
